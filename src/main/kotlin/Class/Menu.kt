@@ -2,7 +2,8 @@ package Class
 
 import java.util.*
 
-class MenuKedua {
+class Menu {
+    val mb = ManajemenBuku()
 
     fun manajemenBuku() {
         val scanner = Scanner(System.`in`)
@@ -20,13 +21,13 @@ class MenuKedua {
         val pilih = scanner.nextInt()
 
         if (pilih == 1) {
-
+            mb.menambahBuku()
         }
         if (pilih == 2) {
-
+            mb.menghapusBuku()
         }
         if (pilih == 3) {
-
+            mb.tampilkanBuku()
         }
         if (pilih > 3 || pilih < 1) {
             println("TOLONG PILIH SESUAI MENU")

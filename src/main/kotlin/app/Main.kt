@@ -1,12 +1,12 @@
 package app
 
-import Class.MenuKedua
+import Class.Menu
 import java.util.*
 
 fun main() {
     val scanner = Scanner(System.`in`)
     var back: String
-    val menuKedua = MenuKedua()
+    val menu = Menu()
 
     do {
         println("=====SELAMAT DATANG DI PUSTAKA DIGITAL=====")
@@ -25,16 +25,16 @@ fun main() {
         val pilih = scanner.nextInt()
 
         if (pilih == 1) {
-            menuKedua.manajemenBuku()
+            menu.manajemenBuku()
         }
         if (pilih == 2) {
-            menuKedua.pencarianBuku()
+            menu.pencarianBuku()
         }
         if (pilih == 3) {
-            menuKedua.peminjamanBuku()
+            menu.peminjamanBuku()
         }
         if (pilih == 4) {
-            menuKedua.pengembalianBuku()
+            menu.pengembalianBuku()
         }
         if (pilih > 4 || pilih < 1) {
             println("TOLONG PILIH SESUAI MENU")
