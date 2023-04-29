@@ -24,20 +24,12 @@ fun main() {
         print("Pilihan : ")
         val pilih = scanner.nextInt()
 
-        if (pilih == 1) {
-            menu.manajemenBuku()
-        }
-        if (pilih == 2) {
-            menu.pencarianBuku()
-        }
-        if (pilih == 3) {
-            menu.peminjamanBuku()
-        }
-        if (pilih == 4) {
-            menu.pengembalianBuku()
-        }
-        if (pilih > 4 || pilih < 1) {
-            println("TOLONG PILIH SESUAI MENU")
+        when (pilih) {
+            1 -> menu.manajemenBuku()
+            2 -> menu.pencarianBuku()
+            3 -> menu.peminjamanBuku()
+            4 -> menu.pengembalianBuku()
+            else -> println("TOLONG PILIH NO SESUAI MENU")
         }
 
         print("Kemenu utama? y/n : ")

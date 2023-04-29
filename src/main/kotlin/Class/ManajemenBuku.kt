@@ -3,11 +3,10 @@ package Class
 import java.sql.SQLException
 import java.util.*
 
-class ManajemenBuku {
+open class ManajemenBuku {
     private val input = Scanner(System.`in`)
     private val connector = DB()
     private val conn = connector.connect()
-    private var id = 1
 
     fun menambahBuku() {
         println()
@@ -24,7 +23,7 @@ class ManajemenBuku {
         if (conn != null) {
             try {
                 val statement = conn.createStatement()
-                val query = "INSERT INTO buku (judul, penulis, penerbit, tahun_terbit) VALUES ($judul, $penulis, $penerbit, $tahun_terbit)"
+                val query = "INSERT INTO buku (judul, penulis, penerbit, tahun_terbit) VALUES ('$judul', '$penulis', '$penerbit', '$tahun_terbit')"
                 statement.executeUpdate(query)
                 statement.close()
             } catch (e: SQLException) {
@@ -43,7 +42,7 @@ class ManajemenBuku {
         if (conn != null) {
             try {
                 val statement = conn.createStatement()
-                val query = "SELECT * FROM buku WHERE judul = $buku"
+                val query = "SELECT * FROM buku WHERE judul = '$buku'"
                 val result = statement.executeQuery(query)
 
                 while (result.next()) {
@@ -71,7 +70,7 @@ class ManajemenBuku {
         }
     }
 
-    fun tampilkanBuku() {
+    open fun tampilkanBuku() {
         if (conn != null) {
             try {
                 val statement = conn.createStatement()
@@ -92,6 +91,9 @@ class ManajemenBuku {
                     println("| %36s | %31s | %31s | %11d | %7s |".format(judul, penulis, penerbit, tahun_terbit, status))
                 }
                 println("+--------------------------------------+---------------------------------+---------------------------------+-------------+----------+")
+
+                result.close()
+                statement.close()
             } catch (e: SQLException) {
                 println("Gagal menampilkan data")
             }
