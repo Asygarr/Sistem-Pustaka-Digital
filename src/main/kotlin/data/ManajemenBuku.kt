@@ -1,4 +1,4 @@
-package Class
+package data
 
 import java.sql.SQLException
 import java.util.*
@@ -17,13 +17,13 @@ open class ManajemenBuku {
         print("Masukkan penerbit buku : ")
         val penerbit = input.nextLine()
         print("Masukkan tahun terbit buku : ")
-        val tahun_terbit = input.nextInt()
+        val tahunTerbit = input.nextInt()
         println()
 
         if (conn != null) {
             try {
                 val statement = conn.createStatement()
-                val query = "INSERT INTO buku (judul, penulis, penerbit, tahun_terbit) VALUES ('$judul', '$penulis', '$penerbit', '$tahun_terbit')"
+                val query = "INSERT INTO buku (judul, penulis, penerbit, tahun_terbit) VALUES ('$judul', '$penulis', '$penerbit', '$tahunTerbit')"
                 statement.executeUpdate(query)
                 statement.close()
             } catch (e: SQLException) {
@@ -46,11 +46,11 @@ open class ManajemenBuku {
                 val result = statement.executeQuery(query)
 
                 while (result.next()) {
-                    val id_buku = result.getInt("id")
+                    val idBuku = result.getInt("id")
 
                     try {
                         val statementDelete = conn.createStatement()
-                        val queryDelete = "DELETE FROM buku WHERE id = $id_buku"
+                        val queryDelete = "DELETE FROM buku WHERE id = $idBuku"
                         statementDelete.executeUpdate(queryDelete)
 
                         statementDelete.close()
@@ -85,10 +85,10 @@ open class ManajemenBuku {
                     val judul = result.getString("judul")
                     val penulis = result.getString("penulis")
                     val penerbit = result.getString("penerbit")
-                    val tahun_terbit = result.getInt("tahun_terbit")
+                    val tahunTerbit = result.getInt("tahun_terbit")
                     val status = result.getString("status")
 
-                    println("| %36s | %31s | %31s | %11d | %7s |".format(judul, penulis, penerbit, tahun_terbit, status))
+                    println("| %36s | %31s | %31s | %11d | %7s |".format(judul, penulis, penerbit, tahunTerbit, status))
                 }
                 println("+--------------------------------------+---------------------------------+---------------------------------+-------------+----------+")
 

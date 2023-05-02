@@ -1,4 +1,4 @@
-package Class
+package data
 
 import java.util.*
 
@@ -23,9 +23,18 @@ class Menu {
         val pilih = scanner.nextInt()
 
         when (pilih) {
-            1 -> mb.menambahBuku()
-            2 -> mb.menghapusBuku()
-            3 -> mb.tampilkanBuku()
+            1 -> {
+                mb.menambahBuku()
+                println("BUKU BERHASIL DI TAMBAHKAN")
+            }
+            2 -> {
+                mb.menghapusBuku()
+                println("BUKU BERHASIL DI HAPUS")
+            }
+            3 -> {
+                mb.tampilkanBuku()
+                println("BERHASIL MENAMPILKAN BUKU")
+            }
             else -> println("TOLONG PILIH NO SESUAI MENU")
         }
     }
@@ -63,6 +72,8 @@ class Menu {
         val buku = scanner.nextLine()
 
         pdp.pengembalianBuku(buku)
+
+        println("BUKU TELAH DIKEMBALIKAN")
     }
 
 }

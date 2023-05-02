@@ -1,12 +1,15 @@
 package app
 
-import Class.Menu
+import data.DB
+import data.Menu
 import java.util.*
 
 fun main() {
     val scanner = Scanner(System.`in`)
     var back: String
+    var lanjut: Boolean
     val menu = Menu()
+    val db = DB()
 
     do {
         println("=====SELAMAT DATANG DI PUSTAKA DIGITAL=====")
@@ -34,8 +37,14 @@ fun main() {
 
         print("Kemenu utama? y/n : ")
         back = scanner.next()
+        if (back == "y") {
+            lanjut = true
+        } else {
+            db.disconnect()
+            lanjut = false
+        }
         println()
-    } while (back.equals("y"))
+    } while (lanjut)
 
 
 }

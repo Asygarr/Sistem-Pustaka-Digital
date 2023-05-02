@@ -1,4 +1,4 @@
-package Class
+package data
 
 import java.sql.SQLException
 
@@ -21,10 +21,10 @@ class PencarianBuku(private val buku: String): ManajemenBuku() {
                     val judul = result.getString("judul")
                     val penulis = result.getString("penulis")
                     val penerbit = result.getString("penerbit")
-                    val tahun_terbit = result.getInt("tahun_terbit")
+                    val tahunTerbit = result.getInt("tahun_terbit")
                     val status = result.getString("status")
 
-                    println("| %36s | %31s | %31s | %11d | %7s |".format(judul, penulis, penerbit, tahun_terbit, status))
+                    println("| %36s | %31s | %31s | %11d | %7s |".format(judul, penulis, penerbit, tahunTerbit, status))
                 }
                 println("+--------------------------------------+---------------------------------+---------------------------------+-------------+----------+")
 
